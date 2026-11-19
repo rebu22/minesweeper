@@ -20,17 +20,17 @@ Build yang dipakai saat pengembangan: Godot `4.7.2.stable`.
 
 ## Kontrol
 
-| Input | Aksi |
-|---|---|
-| Klik kiri | Buka sel |
-| Klik kanan | Pasang / lepas bendera |
-| Klik kiri + kanan bersamaan | Chording |
-| Klik tengah | Chording |
-| `F` | Bendera pada sel yang sedang fokus |
-| `X` | Aktifkan / matikan X-Ray |
-| `A` | Mulai / jeda autoplay |
-| `R` | Permainan baru |
-| `Esc` | Hentikan autoplay |
+| Input                       | Aksi                               |
+| --------------------------- | ---------------------------------- |
+| Klik kiri                   | Buka sel                           |
+| Klik kanan                  | Pasang / lepas bendera             |
+| Klik kiri + kanan bersamaan | Chording                           |
+| Klik tengah                 | Chording                           |
+| `F`                         | Bendera pada sel yang sedang fokus |
+| `X`                         | Aktifkan / matikan X-Ray           |
+| `A`                         | Mulai / jeda autoplay              |
+| `R`                         | Permainan baru                     |
+| `Esc`                       | Hentikan autoplay                  |
 
 Sel dapat difokuskan dengan `Tab`, lalu dibuka dengan `Enter` atau `Space`.
 
@@ -73,22 +73,22 @@ Sel dapat difokuskan dengan `Tab`, lalu dibuka dengan `Enter` atau `Space`.
 GDScript memakai `#` untuk komentar, bukan `//`. Setiap konsep diberi tag yang
 sama di seluruh proyek:
 
-| Tag | Arti | Lokasi utama |
-|---|---|---|
-| `[GOAL-BASED AGENT]` | Tujuan menang dan loop evaluasi aksi | `minesweeper_board.gd` (`reveal`), `main.gd` (`_on_autoplay_tick`) |
-| `[UTILITY-BASED AGENT]` | Pemilihan langkah berdasarkan utilitas informasi | `csp_agent.gd`, `csp_utility_agent.gd` |
-| `[RULE-BASED INFERENCE]` | Inferensi aturan lokal | `rule_based_agent.gd` |
-| `[SINGLE POINT STRATEGY]` | Rumus `MINES = NUMBER - ADJACENT_FLAGS` | `rule_based_agent.gd` |
-| `[CSP]` / `[CSP: VARIABLES]` / `[CSP: CONSTRAINTS]` | Model CSP | `csp_agent.gd` (`next_move`) |
-| `[CONSTRAINT PROPAGATION]` | Reduksi domain | `csp_agent.gd` (`_propagate`) |
-| `[BACKTRACKING]` | Pencarian seluruh solusi dan backbone | `csp_agent.gd` (`_enumerate_component`, `_search`, `_compute_probabilities`) |
-| `[DETERMINISTIC SOLUTION SEARCH]` | Enumerasi deterministik | `csp_agent.gd` (`_enumerate_component`) |
-| `[SOLVER MANAGER]` | Pemuatan agen modular | `solver_manager.gd`, `main.gd` (`_discover_agents`) |
-| `[SOLVER CONTROL]` | Konfigurasi agen dari UI | `solver_agent.gd`, `main.gd` (`_build_agent_options`) |
-| `[X-RAY]` | Tampilan ranjau untuk pengamat | `main.gd` (`_on_xray_toggled`, `_update_cell`) |
-| `[METRICS]` | Rasio menang, tebakan, durasi, biaya node | `benchmark_runner.gd`, `main.gd` (`_render_benchmark`) |
-| `[GAME RULES]` | Aturan permainan | `minesweeper_board.gd` |
-| `[BOARD GENERATION]` | Pembangkitan papan ber-seed | `minesweeper_board.gd` (`generate`) |
+| Tag                                                 | Arti                                             | Lokasi utama                                                                 |
+| --------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `[GOAL-BASED AGENT]`                                | Tujuan menang dan loop evaluasi aksi             | `minesweeper_board.gd` (`reveal`), `main.gd` (`_on_autoplay_tick`)           |
+| `[UTILITY-BASED AGENT]`                             | Pemilihan langkah berdasarkan utilitas informasi | `csp_agent.gd`, `csp_utility_agent.gd`                                       |
+| `[RULE-BASED INFERENCE]`                            | Inferensi aturan lokal                           | `rule_based_agent.gd`                                                        |
+| `[SINGLE POINT STRATEGY]`                           | Rumus `MINES = NUMBER - ADJACENT_FLAGS`          | `rule_based_agent.gd`                                                        |
+| `[CSP]` / `[CSP: VARIABLES]` / `[CSP: CONSTRAINTS]` | Model CSP                                        | `csp_agent.gd` (`next_move`)                                                 |
+| `[CONSTRAINT PROPAGATION]`                          | Reduksi domain                                   | `csp_agent.gd` (`_propagate`)                                                |
+| `[BACKTRACKING]`                                    | Pencarian seluruh solusi dan backbone            | `csp_agent.gd` (`_enumerate_component`, `_search`, `_compute_probabilities`) |
+| `[DETERMINISTIC SOLUTION SEARCH]`                   | Enumerasi deterministik                          | `csp_agent.gd` (`_enumerate_component`)                                      |
+| `[SOLVER MANAGER]`                                  | Pemuatan agen modular                            | `solver_manager.gd`, `main.gd` (`_discover_agents`)                          |
+| `[SOLVER CONTROL]`                                  | Konfigurasi agen dari UI                         | `solver_agent.gd`, `main.gd` (`_build_agent_options`)                        |
+| `[X-RAY]`                                           | Tampilan ranjau untuk pengamat                   | `main.gd` (`_on_xray_toggled`, `_update_cell`)                               |
+| `[METRICS]`                                         | Rasio menang, tebakan, durasi, biaya node        | `benchmark_runner.gd`, `main.gd` (`_render_benchmark`)                       |
+| `[GAME RULES]`                                      | Aturan permainan                                 | `minesweeper_board.gd`                                                       |
+| `[BOARD GENERATION]`                                | Pembangkitan papan ber-seed                      | `minesweeper_board.gd` (`generate`)                                          |
 
 Peta lengkap per sub-bab proposal ada di `CODE_MAP.md`.
 
@@ -139,11 +139,11 @@ langkah "pasti" dari CSP yang justru mengenai ranjau.
 Diukur dengan `tests/bench_report.gd` pada Godot 4.7.2, seed 1..N, agen
 menjalankan konfigurasi yang sama:
 
-| Papan | Game | Rule-Based | CSP | CSP + Utility |
-|---|---:|---:|---:|---:|
-| Beginner 9x9, 10 ranjau | 50 | 88.0% | 94.0% | 94.0% |
-| Intermediate 16x16, 40 ranjau | 20 | 50.0% | 75.0% | 75.0% |
-| Expert 30x16, 99 ranjau | 5 | 0.0% | 60.0% | 60.0% |
+| Papan                         | Game | Rule-Based |   CSP | CSP + Utility |
+| ----------------------------- | ---: | ---------: | ----: | ------------: |
+| Beginner 9x9, 10 ranjau       |   50 |      88.0% | 94.0% |         94.0% |
+| Intermediate 16x16, 40 ranjau |   20 |      50.0% | 75.0% |         75.0% |
+| Expert 30x16, 99 ranjau       |    5 |       0.0% | 60.0% |         60.0% |
 
 Angka di atas berasal dari satu run dan bukan klaim tetap. Pada run 100 game
 Intermediate dengan seed berbeda, CSP dan CSP + Utility sama-sama menang 81%,
@@ -172,5 +172,3 @@ tests/
   run_ui_test.gd
   bench_report.gd
 ```
-
-`Proposal.pdf` tetap disimpan sebagai dokumen acuan.
