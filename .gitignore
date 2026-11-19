@@ -1,0 +1,11 @@
+# Godot 4 generated files
+.godot/
+*.translation
+
+# Exported builds
+build/
+export/
+
+# OS noise
+.DS_Store
+Thumbs.db
